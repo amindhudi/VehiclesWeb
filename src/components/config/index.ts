@@ -44,3 +44,57 @@ export const PRODUCT_CATEGORIES =[
         ]
     }
 ]
+
+export const VEHICLE_CATEGORIES =[
+    {
+        label:"Car",
+        value:"car" as const,
+       
+    },
+    {
+        label:"Jeep",
+        value:"jeep" as const,
+       
+    }
+    ,
+    {
+        label:"MotorCycle",
+        value:"motor_cycle" as const,
+       
+    }
+    ,
+    {
+        label:"Bus",
+        value:"bus" as const,
+       
+    }
+    ,
+    {
+        label:"Truck",
+        value:"truck" as const,
+       
+    }
+    ,
+    {
+        label:"Tractor",
+        value:"tractor" as const,
+       
+    }
+]
+
+export const MAKERS =[
+    {
+        label:"Toyota",
+        value:"toyota" as const,    
+    },
+    {
+        label:"Honda",
+        value:"honda" as const,  
+    }
+    ,
+    {
+        label:"Nissan",
+        value:"nissan" as const,
+      
+    }
+]

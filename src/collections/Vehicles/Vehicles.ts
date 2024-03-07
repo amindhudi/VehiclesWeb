@@ -1,5 +1,5 @@
 
-import { PRODUCT_CATEGORIES } from "../../components/config";
+import { MAKERS, PRODUCT_CATEGORIES, VEHICLE_CATEGORIES } from "../../components/config";
 import { Access, CollectionConfig } from "payload/types";
 import { BeforeChangeHook, AfterChangeHook } from "payload/dist/collections/config/types";
 import { Product, User } from "../../payload-types";
@@ -70,8 +70,8 @@ const isAdminOrHasAccess =():Access =>({req:{user:_user}})=>{
     
 }
 
-export const Products:CollectionConfig={
-    slug:'products',
+export const Vehicles:CollectionConfig={
+    slug:'vehicles',
     admin:{
         useAsTitle:'name'
     }, 
@@ -84,36 +84,36 @@ export const Products:CollectionConfig={
         afterChange:[syncUser],
     beforeChange:[
         addUser, async (args)=>{
-if(args.operation ==='create'){
-    const data = args.data as Product
-    const createProduct = await stripe.products.create({
-        name:data.name,
-        default_price_data:{
-            currency:'USD',
-            unit_amount:Math.round(data.price * 100),
-        }
-    })
+// if(args.operation ==='create'){
+//     const data = args.data as Product
+//     const createProduct = await stripe.products.create({
+//         name:data.name,
+//         default_price_data:{
+//             currency:'USD',
+//             unit_amount:Math.round(data.price * 100),
+//         }
+//     })
 
-    const updated : Product = {
-        ...data,
-        stripeId: createProduct.id,
-        priceId:createProduct.default_price as string
-    }
-    return updated
-} else if(args.operation ==='update'){
-    const data = args.data as Product
-    const updatedProduct = await stripe.products.update(data.stripeId!, {
-        name:data.name,
-       default_price:data.priceId!,
-    })
+//     const updated : Product = {
+//         ...data,
+//         stripeId: createProduct.id,
+//         priceId:createProduct.default_price as string
+//     }
+//     return updated
+// } else if(args.operation ==='update'){
+//     const data = args.data as Product
+//     const updatedProduct = await stripe.products.update(data.stripeId!, {
+//         name:data.name,
+//        default_price:data.priceId!,
+//     })
 
-    const updated : Product = {
-        ...data,
-        stripeId: updatedProduct.id,
-        priceId:updatedProduct.default_price as string
-    }
-    return updated
-}
+//     const updated : Product = {
+//         ...data,
+//         stripeId: updatedProduct.id,
+//         priceId:updatedProduct.default_price as string
+//     }
+//     return updated
+// }
         }
     ]
     },
@@ -141,6 +141,24 @@ if(args.operation ==='create'){
             type:"textarea",
         },
         {
+            name:"category",
+            label:"Category",
+            type:"select",
+            options:VEHICLE_CATEGORIES.map(
+                ({label, value})=> ({label, value})
+            ),
+            required:true
+        },
+        {
+            name:"maker",
+            label:"Maker",
+            type:"select",
+            options:MAKERS.map(
+                ({label, value})=> ({label, value})
+            ),
+            required:true
+        },
+        {
             name:"price",
             label:"Price",
             type:"number",
@@ -149,22 +167,22 @@ if(args.operation ==='create'){
             required:true
         },
         {
-            name:"category",
-            label:"Category",
-            type:"select",
-            options:PRODUCT_CATEGORIES.map(
-                ({label, value})=> ({label, value})
-            ),
+            name:"model",
+            label:"Model",
+            type:"number",
+            // min:0,
+            // max:1000
             required:true
         },
-        {
-            name:"product_files",
-            label:"Product File(s)",
-            type:"relationship",
-            required:true,
-            relationTo:"product_files",
-            hasMany:false
-        },
+       
+        // {
+        //     name:"product_files",
+        //     label:"Product File(s)",
+        //     type:"relationship",
+        //     required:true,
+        //     relationTo:"product_files",
+        //     hasMany:false
+        // },
         {
             name:"approvedForSale",
             label:"Product Status",
@@ -190,34 +208,34 @@ if(args.operation ==='create'){
                 },
             ]
         },
-        {
-            name:"priceId", 
-            access:{
-                create:()=> false,
-                read:()=> false,
-                update:()=> false
-            }, 
-            type:"text",
-            admin:{
-                hidden:true,
-            }
-        },
-        {
-            name:"stripeId", 
-            access:{
-                create:()=> false,
-                read:()=> false,
-                update:()=> false
-            }, 
-            type:"text",
-            admin:{
-                hidden:true,
-            }
-        },
+        // {
+        //     name:"priceId", 
+        //     access:{
+        //         create:()=> false,
+        //         read:()=> false,
+        //         update:()=> false
+        //     }, 
+        //     type:"text",
+        //     admin:{
+        //         hidden:true,
+        //     }
+        // },
+        // {
+        //     name:"stripeId", 
+        //     access:{
+        //         create:()=> false,
+        //         read:()=> false,
+        //         update:()=> false
+        //     }, 
+        //     type:"text",
+        //     admin:{
+        //         hidden:true,
+        //     }
+        // },
         {
             name:"images",
             type:"array",
-            label:"Product images",
+            label:"Vehicle images",
             minRows:1,
             maxRows:4,
             required:true,

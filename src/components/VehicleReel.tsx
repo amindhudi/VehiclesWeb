@@ -1,11 +1,11 @@
 'use client'
 import { TQueryValidator } from "@/lib/validators/query-validator"
-import { Product } from "@/payload-types"
+import { Product, Vehicle } from "@/payload-types"
 import { trpc } from "@/trpc/client"
 import Link from "next/link"
-import ProductListing from "./ProductListing"
+import VehicleListing from "./VehicleListing"
 
-interface ProductReelProps{
+interface VehicleReelProps{
     title:string,
     subtitle?:string,
     href?:string,
@@ -14,7 +14,7 @@ interface ProductReelProps{
 }
 
 const FALLBACK_LIMIT = 4
-const ProductReel =(props: ProductReelProps)=>{
+const VehicleReel =(props: VehicleReelProps)=>{
     const {title, subtitle, href, query} = props
     const {data:queryResults, isLoading} = trpc.getInfiniteProducts.useInfiniteQuery({
         limit: query.limit?? FALLBACK_LIMIT, query
@@ -23,12 +23,18 @@ const ProductReel =(props: ProductReelProps)=>{
         getNextPageParam:(lastPage)=> lastPage.nextPage
     }
     )
-    const products = queryResults?.pages.flatMap(
+
+
+    const vehicles = queryResults?.pages.flatMap(
         (page)=> page.items
     )
+
+    console.log(vehicles)
+
+
     let map:(Product | null)[]=[]
-    if(products && products.length){
-        map=products
+    if(vehicles && vehicles.length){
+        map=vehicles
     } else if(isLoading){
         map= new Array<null>(query.limit?? FALLBACK_LIMIT).fill(null)
     }
@@ -57,8 +63,8 @@ Shop the collection{' '}
         <div className="mt-6 flex items-center w-full">
 <div 
 className="w-full grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-10 lg:gap-x-8"> 
-{map.map((product, i)=>(
-<ProductListing key={`product-${i}`} product={product} index={i}/>
+{map.map((vehicle, i)=>(
+<VehicleListing key={`vehicle-${i}`} vehicle={vehicle} index={i}/>
 )
 )}
 </div>
@@ -68,4 +74,4 @@ className="w-full grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md
 </section>
 }
 
-export default ProductReel
+export default VehicleReel
