@@ -8,7 +8,7 @@ import ImageSlider from "./ImageSlider"
 import { Skeleton } from "./ui/skeleton"
 
 interface VehicleListingProps{
-vehicle: Product | null,
+vehicle: Vehicle | null,
 index : number
 }
 
@@ -22,7 +22,7 @@ const VehicleListing =({vehicle, index}: VehicleListingProps)=>{
     }, [index])
     if(!vehicle || !isVisible) return <VehiclePlaceholder />
   
-  const label = PRODUCT_CATEGORIES.find(
+  const label = VEHICLE_CATEGORIES.find(
     ({value}) => value===vehicle.category
   )?.label
 
@@ -34,7 +34,7 @@ const VehicleListing =({vehicle, index}: VehicleListingProps)=>{
         "visible animate-in fade-in-5":isVisible,
     } 
     )} 
-    href={`/product/${vehicle.id}`}>
+    href={`/vehicle/${vehicle.id}`}>
         <div className="flex flex-col w-full">
         <ImageSlider urls={validUrls} />
 

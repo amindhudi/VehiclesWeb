@@ -22,6 +22,11 @@ const VehiclesPage = ({
     ({ value }) => value === category
   )?.label
 
+  console.log('label: ' + label)
+  console.log('sort: ' + sort)
+  console.log('category: ' + category)
+
+
   return (
     <MaxWidthWrapper>
       <ProductReel

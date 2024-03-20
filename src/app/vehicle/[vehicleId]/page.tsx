@@ -1,5 +1,5 @@
 import AddToCartButton from "@/components/AddToCartButton"
-import { PRODUCT_CATEGORIES } from "@/components/config"
+import { PRODUCT_CATEGORIES, VEHICLE_CATEGORIES } from "@/components/config"
 import ImageSlider from "@/components/ImageSlider"
 import MaxWidthWrapper from "@/components/MaxWidthWrapper"
 import ProductReel from "@/components/VehicleReel"
@@ -12,7 +12,7 @@ import payload from "payload"
 
 interface PageProps{
     params:{
-        productId:string
+        vehicleId:string
     }
 }
 
@@ -22,27 +22,27 @@ const BREADCRUMBS =[
 
 ]
 const Page = async ({params}: PageProps)=>{
-    const {productId} = params
+    const {vehicleId} = params
     const payload = await getPayloadClient()
-    const {docs: products} = await payload.find({
-        collection:'products',
+    const {docs: vehicles} = await payload.find({
+        collection:'vehicles',
         limit:1,
         where:{
             id:{
-                equals: productId
+                equals: vehicleId
             },
             approvedForSale :{
                 equals:'approved'
             }
         }
     })
-    const [product] = products
-    if(!product) return notFound()
+    const [vehicle] = vehicles
+    if(!vehicle) return notFound()
 
-    const label = PRODUCT_CATEGORIES.find(
-        ({value}) => value === product.category 
+    const label = VEHICLE_CATEGORIES.find(
+        ({value}) => value === vehicle.category 
     )?.label
-    const validUrls = product.images.map(({image}) =>
+    const validUrls = vehicle.images.map(({image}) =>
     typeof image==="string" ? image : image.url
     ).filter(Boolean) as string[]
 
@@ -78,13 +78,13 @@ return (
          </ol>
          <div className="mt-4">
          <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            {product.name}
+            {vehicle.name}
             </h1>
          </div>
          <section className="mt-4">
           <div className="flex items-center">
            <p className="font-medium text-gray-900">
-            {formatPrice(product.price)}
+            {formatPrice(vehicle.price)}
             </p>
             <div className="ml-4 border-1 text-muted-foreground border-gray-300 pl-4">
                 {label}
@@ -93,7 +93,7 @@ return (
 
           <div className="mt-4 space-y-6">
             <p className="text-base text-muted-foreground">
-                {product.description}
+                {vehicle.description}
             </p>
           </div>
           <div className="mt-6 flex items-center">
@@ -120,9 +120,9 @@ return (
          {/*add to cart part */}
          <div className="mt-10 lg:col-start-1 lg:row-start-2 lg:max-w-lg lg:self-start">
           <div>
-            <div className="mt-10">
+            {/* <div className="mt-10">
               <AddToCartButton product={product} />
-            </div>
+            </div> */}
             <div className="mt-6 text-center">
             <div className="group inline-flex text-sm text-medium">
               <Shield 
@@ -140,9 +140,9 @@ return (
     </div>
   <ProductReel 
   href="/products"
-   query={{ category: product.category, limit:4, sort:'desc'}}
+   query={{ category: vehicle.category, limit:4, sort:'desc'}}
    title={`Similar ${label}`}
-   subtitle={`Browse similar high-quality ${label} just like ${product.name}`}
+   subtitle={`Browse similar high-quality ${label} just like ${vehicle.name}`}
    />
  </MaxWidthWrapper>
 )

@@ -16,7 +16,7 @@ interface VehicleReelProps{
 const FALLBACK_LIMIT = 4
 const VehicleReel =(props: VehicleReelProps)=>{
     const {title, subtitle, href, query} = props
-    const {data:queryResults, isLoading} = trpc.getInfiniteProducts.useInfiniteQuery({
+    const {data:queryResults, isLoading} = trpc.getInfiniteVehicles.useInfiniteQuery({
         limit: query.limit?? FALLBACK_LIMIT, query
     },
     {
@@ -32,7 +32,7 @@ const VehicleReel =(props: VehicleReelProps)=>{
     console.log(vehicles)
 
 
-    let map:(Product | null)[]=[]
+    let map:(Vehicle | null)[]=[]
     if(vehicles && vehicles.length){
         map=vehicles
     } else if(isLoading){
