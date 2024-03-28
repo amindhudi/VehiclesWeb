@@ -4,6 +4,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { ArrowDownToLine, CheckCircle, Leaf } from "lucide-react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
+import ComboBoxResponsive from "@/components/ComboBoxResponsive";
 const perks=[
   {
   name:'Instant Delivery',
@@ -32,7 +33,9 @@ export default function Home() {
     <MaxWidthWrapper>
       <div className="py-10 mx-auto text-center flex flex-col items-center max-w-3xl">
 
-
+      <div>
+        <ComboBoxResponsive />
+      </div>
   
     <div className="flex w-full max-w-lg relative text-gray-600 focus-within:text-gray-400">
       
