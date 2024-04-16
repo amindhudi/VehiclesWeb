@@ -2,6 +2,8 @@ import { z } from "zod";
 
 export const QueryValidator = z.object({
     category:z.string().optional(),
+    company:z.string().optional(),
+    vehicle:z.string().optional(),
     sort:z.enum(['asc', 'desc']),
     limit:z.number().optional()
 })

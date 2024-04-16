@@ -1,10 +1,12 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductReel from "@/components/VehicleReel";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { ArrowDownToLine, CheckCircle, Leaf } from "lucide-react";
+import { ArrowDownToLine, CheckCircle, Leaf} from "lucide-react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import ComboBoxResponsive from "@/components/ComboBoxResponsive";
+import React from "react";
+import Search from "@/components/Search";
 const perks=[
   {
   name:'Instant Delivery',
@@ -28,16 +30,17 @@ const perks=[
 
 ]
 export default function Home() {
+  // const [open, setOpen] = React.useState(false)
+  // const [value, setValue] = React.useState("")
+
+
   return (
     <>
     <MaxWidthWrapper>
-      <div className="py-10 mx-auto text-center flex flex-col items-center max-w-3xl">
-
-      <div>
-        <ComboBoxResponsive />
-      </div>
-  
-    <div className="flex w-full max-w-lg relative text-gray-600 focus-within:text-gray-400">
+      <Search />
+      {/* <div className="py-10 mx-auto text-center flex flex-col items-center max-w-3xl"> */}
+          
+    {/* <div className="flex w-full max-w-lg relative text-gray-600 focus-within:text-gray-400">
       
       <Input type="search" name="q" className="w-full max-w-lg py-2 text-sm text-white rounded-xl pl-10 focus:outline-none focus:bg-white focus:text-gray-900" placeholder="Search..." />
       <span className="absolute inset-y-0 right-0 flex items-center pl-2">
@@ -45,7 +48,7 @@ export default function Home() {
           <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </button>
       </span>
-    </div>
+    </div> */}
 
 
 
@@ -65,7 +68,7 @@ export default function Home() {
        <Link href='/products' className={buttonVariants()} >Browse Trending</Link>
        <Button variant='ghost'>Our quality promise &rarr;</Button>
       </div> */}
-      </div>
+      {/* </div> */}
       <ProductReel query={{sort:'desc', limit: 4}} title="Brand new" href="/vehicles" />
     </MaxWidthWrapper>
     {/* <section className="border-t border-gray-200 bg-gray-50">
