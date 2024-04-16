@@ -5,6 +5,7 @@ import React from "react"
 import MaxWidthWrapper from "./MaxWidthWrapper"
 import { Button } from "./ui/button"
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "./ui/command"
+import { Input } from "./ui/input"
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
 
 
@@ -38,59 +39,14 @@ const Search = () =>{
   return(
     <>
       <MaxWidthWrapper>
-        <div>
-          {/* Category */}
-          <div>
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-[200px] justify-between"
-        >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
-        <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
-          <CommandGroup>
-            {frameworks.map((framework) => (
-              <CommandItem
-                key={framework.value}
-                value={framework.value}
-                onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue)
-                  setOpen(false)
-                }}
-              >
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    value === framework.value ? "opacity-100" : "opacity-0"
-                  )}
-                />
-                {framework.label}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </Command>
-      </PopoverContent>
-    </Popover>
-
-          </div>
-          {/* Company */}
-          <div>
-
-          </div>
-          {/* Model */}
-          <div>
-
+        <div className="py-10 mx-auto text-center flex flex-col items-center max-w-3xl">
+          <div className="flex w-full max-w-lg relative text-gray-600 focus-within:text-gray-400">
+            <Input type="search" name="q" className="w-full max-w-lg py-2 text-sm text-white rounded-xl pl-10 focus:outline-none focus:bg-white focus:text-gray-900" placeholder="Search..." />
+            <span className="absolute inset-y-0 right-0 flex items-center pl-2">
+              <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </button>
+            </span>
           </div>
         </div>
       </MaxWidthWrapper>
