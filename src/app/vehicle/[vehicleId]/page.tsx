@@ -139,10 +139,8 @@ return (
         </div>
     </div>
   <ProductReel 
-  href="/products"
+  href="/vehicles"
    query={{ category: vehicle.category, limit:4, sort:'desc'}}
-   title={`Similar ${label}`}
-   subtitle={`Browse similar high-quality ${label} just like ${vehicle.name}`}
    />
  </MaxWidthWrapper>
 )

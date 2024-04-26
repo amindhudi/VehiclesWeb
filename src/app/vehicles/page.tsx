@@ -30,7 +30,6 @@ const VehiclesPage = ({
   return (
     <MaxWidthWrapper>
       <ProductReel
-        title={label ?? 'Browse high-quality assets'}
         query={{
           category,
           limit: 40,

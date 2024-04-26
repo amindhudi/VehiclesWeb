@@ -37,9 +37,8 @@ export default function Home() {
   return (
     <>
     <MaxWidthWrapper>
-      <Search />
-     
-      <ProductReel query={{sort:'desc', limit: 4}} title="Brand new" href="/vehicles" />
+      <Search />  
+      <ProductReel query={{sort:'desc', limit: 4}} href="/vehicles" />
     </MaxWidthWrapper>
    
     </>

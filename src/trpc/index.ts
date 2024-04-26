@@ -96,7 +96,7 @@ const {docs:items, hasNextPage, nextPage} = await payload.find({
   query:QueryValidator
 })).query(async ({input})=>{
   const {query, cursor}= input
-  const {sort, limit, ...queryOpts}= query
+  const {sort, limit, search, ...queryOpts}= query
 
   const payload = await getPayloadClient()
 
@@ -116,6 +116,15 @@ const {docs:items, hasNextPage, nextPage} = await payload.find({
           approvedForSale:{
               equals:'approved'
           },
+          // or: [
+          //   // array of OR conditions
+          //   {
+          //     name: {
+          //       contains: 'Honda',
+          //     },
+          //   },
+            
+          // ],
           ...parsedQueryOpts
       },
       sort,

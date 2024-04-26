@@ -6,8 +6,6 @@ import Link from "next/link"
 import VehicleListing from "./VehicleListing"
 
 interface VehicleReelProps{
-    title:string,
-    subtitle?:string,
     href?:string,
     query:TQueryValidator
 
@@ -15,7 +13,7 @@ interface VehicleReelProps{
 
 const FALLBACK_LIMIT = 4
 const VehicleReel =(props: VehicleReelProps)=>{
-    const {title, subtitle, href, query} = props
+    const {href, query} = props
     const {data:queryResults, isLoading} = trpc.getInfiniteVehicles.useInfiniteQuery({
         limit: query.limit?? FALLBACK_LIMIT, query
     },
@@ -29,7 +27,7 @@ const VehicleReel =(props: VehicleReelProps)=>{
         (page)=> page.items
     )
 
-    console.log(vehicles)
+    
 
 
     let map:(Vehicle | null)[]=[]
@@ -39,7 +37,7 @@ const VehicleReel =(props: VehicleReelProps)=>{
         map= new Array<null>(query.limit?? FALLBACK_LIMIT).fill(null)
     }
 return <section className="py-12">
-    <div className="md:flex md:items-center md:justify-between mb-4">
+    {/* <div className="md:flex md:items-center md:justify-between mb-4">
       <div className="max-w-2xl px-4 lg:max-w-4xl lg:px-0">
 {title ?(
  <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -58,7 +56,7 @@ className="hidden text-sm font-medium text-blue-600 hover:text-blue-500 md:block
 Shop the collection{' '}
  <span aria-hidden='true'>&rarr;</span>
  </Link>):null}
-    </div>
+    </div> */}
     <div className="relative">
         <div className="mt-6 flex items-center w-full">
 <div 
