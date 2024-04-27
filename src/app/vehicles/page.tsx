@@ -1,6 +1,9 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper'
 import ProductReel from '@/components/VehicleReel'
 import { PRODUCT_CATEGORIES } from '@/components/config'
+import Search from '@/components/Search'
+import { Suspense } from 'react'
+import SkeletonCard from '@/components/SkeletonCard'
 
 type Param = string | string[] | undefined
 
@@ -17,6 +20,8 @@ const VehiclesPage = ({
 }: VehiclesPageProps) => {
   const sort = parse(searchParams.sort)
   const category = parse(searchParams.category)
+  const search = parse(searchParams.search) || ''
+  const page = parse(searchParams.page) || 1
 
   const label = PRODUCT_CATEGORIES.find(
     ({ value }) => value === category
@@ -29,16 +34,21 @@ const VehiclesPage = ({
 
   return (
     <MaxWidthWrapper>
+      <Search />  
+      <Suspense key={search + page} fallback={<SkeletonCard/>}>
       <ProductReel
         query={{
           category,
           limit: 40,
+          search: search?? '',
           sort:
             sort === 'desc' || sort === 'asc'
               ? sort
               : 'asc',
         }}
       />
+      </Suspense>
+     
     </MaxWidthWrapper>
   )
 }

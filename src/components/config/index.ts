@@ -97,4 +97,16 @@ export const MAKERS =[
         value:"nissan" as const,
       
     }
+    ,
+    {
+        label:"Suzuki",
+        value:"suzuki" as const,
+      
+    }
+    ,
+    {
+        label:"Yamaha",
+        value:"yamaha" as const,
+      
+    }
 ]

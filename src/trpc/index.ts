@@ -116,15 +116,20 @@ const {docs:items, hasNextPage, nextPage} = await payload.find({
           approvedForSale:{
               equals:'approved'
           },
-          // or: [
-          //   // array of OR conditions
-          //   {
-          //     name: {
-          //       contains: 'Honda',
-          //     },
-          //   },
+          or: [
+            // array of OR conditions
+            {
+              name: {
+                contains: search,
+              },
+            },
+            {
+              maker: {
+                contains: search,
+              },
+            },
             
-          // ],
+          ],
           ...parsedQueryOpts
       },
       sort,
