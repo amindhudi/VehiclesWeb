@@ -4,6 +4,7 @@ import { PRODUCT_CATEGORIES } from '@/components/config'
 import Search from '@/components/Search'
 import { Suspense } from 'react'
 import SkeletonCard from '@/components/SkeletonCard'
+import PaginationPage from '@/components/Pagination'
 
 type Param = string | string[] | undefined
 
@@ -48,6 +49,8 @@ const VehiclesPage = ({
         }}
       />
       </Suspense>
+
+      <PaginationPage/>
      
     </MaxWidthWrapper>
   )

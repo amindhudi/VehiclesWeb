@@ -1,3 +1,5 @@
+'use client'
+
 import { Card } from "./ui/card"
 import {
     Pagination,
@@ -16,13 +18,13 @@ const PaginationPage = () =>{
     
     const lastItemIndex = currentPage * itemsPerPage;
     const firstItemIndex = lastItemIndex - itemsPerPage;
-    const currentItems = data.slice(firstItemIndex, lastItemIndex)
+    //const currentItems = data.slice(firstItemIndex, lastItemIndex)
 
 
 return(
 
        <PaginationSection 
-totalItems={data.lenght}
+totalItems={100}
 itemsPerPage={itemsPerPage}
 currentPage ={currentPage}
 setCurrentPage ={setCurrentPage}
@@ -30,7 +32,7 @@ setCurrentPage ={setCurrentPage}
 />
 )
 }
-export default Pagination
+export default PaginationPage
 
 function PaginationSection({
     totalItems,
