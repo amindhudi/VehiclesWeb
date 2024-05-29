@@ -233,6 +233,14 @@ export const Vehicles:CollectionConfig={
         //     }
         // },
         {
+            name:"isFeatured",
+            label:"Featured",
+            type:"checkbox",
+            // min:0,
+            // max:1000
+            //required:true
+        },
+        {
             name:"images",
             type:"array",
             label:"Vehicle images",

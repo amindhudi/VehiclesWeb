@@ -25,7 +25,7 @@ admin:{
     user:'users',
     bundler:webpackBundler(),
     meta:{
-        titleSuffix:'_ DigitalHippo',
+        titleSuffix:'_ Vehicles',
         favicon:'/favicon.ico',
         ogImage:'/thumbnail.jpg'
     }

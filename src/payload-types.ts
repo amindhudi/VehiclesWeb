@@ -42,10 +42,11 @@ export interface Vehicle {
   name: string;
   description?: string | null;
   category: 'car' | 'jeep' | 'motor_cycle' | 'bus' | 'truck' | 'tractor';
-  maker: 'toyota' | 'honda' | 'nissan';
+  maker: 'toyota' | 'honda' | 'nissan' | 'suzuki' | 'yamaha';
   price: number;
   model: number;
   approvedForSale?: ('pending' | 'approved' | 'denied') | null;
+  isFeatured?: boolean | null;
   images: {
     image: string | Media;
     id?: string | null;

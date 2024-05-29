@@ -48,10 +48,7 @@ const VehiclesPage = ({
               : 'asc',
         }}
       />
-      </Suspense>
-
-      <PaginationPage/>
-     
+      </Suspense>     
     </MaxWidthWrapper>
   )
 }

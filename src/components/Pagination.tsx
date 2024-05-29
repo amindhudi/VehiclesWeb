@@ -11,10 +11,20 @@ import {
     PaginationPrevious,
   } from "@/components/ui/pagination"
 import { useState } from "react"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
 
-const PaginationPage = () =>{
-    const [currentPage, setCurrentPage]=useState(1)
-    const [itemsPerPage, setItemsPerPage]=useState(6)
+const PaginationPage = ({
+  total,
+  perPage,
+  page,
+ 
+}: {
+  total: any;
+  perPage: any;
+  page: any;
+}) =>{
+    const [currentPage, setCurrentPage]=useState(page)
+    const [itemsPerPage, setItemsPerPage]=useState(perPage)
     
     const lastItemIndex = currentPage * itemsPerPage;
     const firstItemIndex = lastItemIndex - itemsPerPage;
@@ -24,7 +34,7 @@ const PaginationPage = () =>{
 return(
 
        <PaginationSection 
-totalItems={100}
+totalItems={total}
 itemsPerPage={itemsPerPage}
 currentPage ={currentPage}
 setCurrentPage ={setCurrentPage}
@@ -45,6 +55,10 @@ function PaginationSection({
     currentPage: any;
     setCurrentPage: any;
   }) {
+
+
+
+
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
       pageNumbers.push(i);
@@ -69,15 +83,32 @@ function PaginationSection({
         setCurrentPage(currentPage - 1);
       }
     };
+
+    const searchParams = useSearchParams();
+      let pathname = usePathname();
+      const { replace } = useRouter();
+    const handleRoute = (page:any) => {
+
+      setCurrentPage(page)
+      if(pathname==='/'){
+        pathname ='/vehicles';
+      }
+      const params = new URLSearchParams(searchParams);
+        params.set('page', page);
+      replace(`${pathname}?${params.toString()}`);
+    };
   
+    
     // Function to render page numbers with ellipsis
     const renderPages = () => {
+      
+
       const renderedPages = activePages.map((page, idx) => (
         <PaginationItem
           key={idx}
           className={currentPage === page ? "bg-neutral-100 rounded-md" : ""}
         >
-          <PaginationLink onClick={() => setCurrentPage(page)}>
+          <PaginationLink onClick={() => handleRoute(page)}>
             {page}
           </PaginationLink>
         </PaginationItem>
