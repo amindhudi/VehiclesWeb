@@ -15,7 +15,7 @@ interface VehicleReelProps{
 const FALLBACK_LIMIT = 4
 const VehicleReel =(props: VehicleReelProps)=>{
     const {href, query} = props
-    const {data:queryResults, isLoading} = trpc.getInfiniteVehicles.useInfiniteQuery({
+    const {data:queryResults, isLoading, fetchNextPage, hasNextPage,  isError} = trpc.getInfiniteVehicles.useInfiniteQuery({
         limit: query.limit?? FALLBACK_LIMIT,  query
     },
     {
@@ -58,6 +58,9 @@ return (
         {/* <section className="py-12">
             <PaginationPage total={query.limit} perPage={4} page={1} />
         </section> */}
+
+{hasNextPage && <button onClick={() => fetchNextPage()}>Load More</button>}
+
 </>
 )
 }
