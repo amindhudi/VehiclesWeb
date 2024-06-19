@@ -4,6 +4,7 @@ import { Product, Vehicle } from "@/payload-types"
 import { trpc } from "@/trpc/client"
 import Link from "next/link"
 import PaginationPage from "./Pagination"
+import { Button } from "./ui/button"
 import VehicleListing from "./VehicleListing"
 
 interface VehicleReelProps{
@@ -55,11 +56,17 @@ return (
             </div>
         </section>
 
+        <section className="py-12">
+            <div className="flex justify-center items-center">
+                {hasNextPage && <Button size="lg" onClick={() => fetchNextPage()}>Load More</Button>}
+            </div>
+        </section>
+
         {/* <section className="py-12">
             <PaginationPage total={query.limit} perPage={4} page={1} />
         </section> */}
 
-{hasNextPage && <button onClick={() => fetchNextPage()}>Load More</button>}
+
 
 </>
 )
