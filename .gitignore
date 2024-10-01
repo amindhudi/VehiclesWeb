@@ -397,6 +397,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 *.env
-.next
-/.next/server/server-reference-manifest.json
-/.next/trace
+.next/

@@ -36,25 +36,25 @@ export const Users : CollectionConfig={
     },
     fields:[
         {
-         name:'products',
-         label:'Products',
+         name:'vehicles',
+         label:'Vehicles',
          admin:{
             condition : () => false
          },
          type:'relationship',
-         relationTo:'products',
+         relationTo:'vehicles',
          hasMany:true
         },
-        {
-         name:'product_files',
-         label:'Product files',
-         admin:{
-            condition : () => false
-         },
-         type:'relationship',
-         relationTo:'product_files',
-         hasMany:true
-        },
+        // {
+        //  name:'product_files',
+        //  label:'Product files',
+        //  admin:{
+        //     condition : () => false
+        //  },
+        //  type:'relationship',
+        //  relationTo:'product_files',
+        //  hasMany:true
+        // },
         {
             name:'role',
             type:'select',

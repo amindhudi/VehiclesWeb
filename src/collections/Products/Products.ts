@@ -17,10 +17,10 @@ const fullUser = await req.payload.findByID({
     id:req.user.id
 })
 if(fullUser && typeof fullUser==='object'){
-    const {products}=fullUser
+    const {vehicles}=fullUser
 
     const allIDs =[
-        ...(products?.map((product)=> typeof product==='object' ? product.id:product) || []),
+        ...(vehicles?.map((vehicle)=> typeof vehicle==='object' ? vehicle.id:vehicle) || []),
     ]
 
     const createdProductIDs = allIDs.filter(
@@ -33,7 +33,7 @@ if(fullUser && typeof fullUser==='object'){
         collection:'users',
         id: fullUser.id,
         data:{
-            products:dataToUpdate
+            vehicles:dataToUpdate
         }
     })
 
@@ -51,13 +51,13 @@ const isAdminOrHasAccess =():Access =>({req:{user:_user}})=>{
     if(!user) return false
     if(user.role ==='admin') return true
 
-    const userProductIDs =(user.products || []).reduce<Array<string>>((acc, product)=>{
-        if(!product) return acc
-        if(typeof product === "string"){
-            acc.push(product)
+    const userProductIDs =(user.vehicles || []).reduce<Array<string>>((acc, vehicle)=>{
+        if(!vehicle) return acc
+        if(typeof vehicle === "string"){
+            acc.push(vehicle)
         }
         else{
-            acc.push(product.id)
+            acc.push(vehicle.id)
         }
         return acc
     }, [])

@@ -13,6 +13,7 @@ export interface Config {
     media: Media;
     product_files: ProductFile;
     orders: Order;
+    vehicles: Vehicle;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -20,8 +21,7 @@ export interface Config {
 }
 export interface User {
   id: string;
-  products?: (string | Product)[] | null;
-  product_files?: (string | ProductFile)[] | null;
+  vehicles?: (string | Vehicle)[] | null;
   role?: ('admin' | 'user') | null;
   updatedAt: string;
   createdAt: string;
@@ -36,35 +36,23 @@ export interface User {
   lockUntil?: string | null;
   password: string | null;
 }
-export interface Product {
+export interface Vehicle {
   id: string;
   user?: (string | null) | User;
   name: string;
   description?: string | null;
+  category: 'car' | 'jeep' | 'motor_cycle' | 'bus' | 'truck' | 'tractor';
+  maker: 'toyota' | 'honda' | 'nissan' | 'suzuki' | 'yamaha';
   price: number;
-  category: 'ui_kits' | 'icons';
-  product_files: string | ProductFile;
+  model: number;
   approvedForSale?: ('pending' | 'approved' | 'denied') | null;
-  priceId?: string | null;
-  stripeId?: string | null;
+  isFeatured?: boolean | null;
   images: {
     image: string | Media;
     id?: string | null;
   }[];
   updatedAt: string;
   createdAt: string;
-}
-export interface ProductFile {
-  id: string;
-  user?: (string | null) | User;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
 }
 export interface Media {
   id: string;
@@ -103,6 +91,36 @@ export interface Media {
       filename?: string | null;
     };
   };
+}
+export interface Product {
+  id: string;
+  user?: (string | null) | User;
+  name: string;
+  description?: string | null;
+  price: number;
+  category: 'ui_kits' | 'icons';
+  product_files: string | ProductFile;
+  approvedForSale?: ('pending' | 'approved' | 'denied') | null;
+  priceId?: string | null;
+  stripeId?: string | null;
+  images: {
+    image: string | Media;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+export interface ProductFile {
+  id: string;
+  user?: (string | null) | User;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
 }
 export interface Order {
   id: string;
