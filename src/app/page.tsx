@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import ComboBoxResponsive from "@/components/ComboBoxResponsive";
 import React from "react";
 import Search from "@/components/Search";
+import InfiniteList from "@/components/InfiniteList";
 const perks=[
   {
   name:'Instant Delivery',
@@ -37,8 +38,13 @@ export default function Home() {
   return (
     <>
     <MaxWidthWrapper>
-      <Search />  
-      <ProductReel query={{sort:'desc', limit: 5, search:''}} href="/vehicles" />
+      {/* <Search />  
+      <ProductReel query={{sort:'desc', limit: 5, search:''}} href="/vehicles" /> */}
+          <div>
+      <h1>Infinite Scrolling List</h1>
+      {/* <InfiniteList /> */}
+    </div>
+
     </MaxWidthWrapper>
    
     </>

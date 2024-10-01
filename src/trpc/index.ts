@@ -6,6 +6,7 @@ import { publicProcedure, router } from "./trpc";
 import { paymentRouter } from "./payment-router";
 import { AuthCredentialsValidator } from "../lib/validators/account-credentials-validator";
 import { TRPCError } from "@trpc/server";
+import { exampleRouter } from "./example-routher";
 
 export const appRouter =router({
   getTodos: publicProcedure.query( async () =>{
@@ -51,6 +52,7 @@ export const appRouter =router({
 //   }),
  auth: authRouter,
  payment:paymentRouter,
+ example:exampleRouter,
  getInfiniteProducts: publicProcedure.input(z.object({
     limit:z.number().min(1).max(100),
     cursor:z.number().nullish(),
