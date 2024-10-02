@@ -14,12 +14,13 @@ var Products_1 = require("./collections/Products/Products");
 var Media_1 = require("./collections/Media");
 var ProductFile_1 = require("./collections/ProductFile");
 var Orders_1 = require("./collections/Orders");
+var Vehicles_1 = require("./collections/Vehicles/Vehicles");
 dotenv_1.default.config({
     path: path_1.default.resolve(__dirname, '../.env')
 });
 exports.default = (0, config_1.buildConfig)({
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
-    collections: [Users_1.Users, Products_1.Products, Media_1.Media, ProductFile_1.ProductFiles, Orders_1.Orders],
+    collections: [Users_1.Users, Products_1.Products, Media_1.Media, ProductFile_1.ProductFiles, Orders_1.Orders, Vehicles_1.Vehicles],
     routes: {
         admin: '/sell'
     },
@@ -27,7 +28,7 @@ exports.default = (0, config_1.buildConfig)({
         user: 'users',
         bundler: (0, bundler_webpack_1.webpackBundler)(),
         meta: {
-            titleSuffix: '_ DigitalHippo',
+            titleSuffix: '_ Vehicles',
             favicon: '/favicon.ico',
             ogImage: '/thumbnail.jpg'
         }

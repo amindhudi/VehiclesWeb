@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PRODUCT_CATEGORIES = void 0;
+exports.MAKERS = exports.VEHICLE_CATEGORIES = exports.PRODUCT_CATEGORIES = void 0;
 exports.PRODUCT_CATEGORIES = [
     {
         label: "UI Kits",
@@ -43,5 +43,53 @@ exports.PRODUCT_CATEGORIES = [
                 imageSrc: "/nav/icons/bestsellers.jpg",
             }
         ]
+    }
+];
+exports.VEHICLE_CATEGORIES = [
+    {
+        label: "Car",
+        value: "car",
+    },
+    {
+        label: "Jeep",
+        value: "jeep",
+    },
+    {
+        label: "MotorCycle",
+        value: "motor_cycle",
+    },
+    {
+        label: "Bus",
+        value: "bus",
+    },
+    {
+        label: "Truck",
+        value: "truck",
+    },
+    {
+        label: "Tractor",
+        value: "tractor",
+    }
+];
+exports.MAKERS = [
+    {
+        label: "Toyota",
+        value: "toyota",
+    },
+    {
+        label: "Honda",
+        value: "honda",
+    },
+    {
+        label: "Nissan",
+        value: "nissan",
+    },
+    {
+        label: "Suzuki",
+        value: "suzuki",
+    },
+    {
+        label: "Yamaha",
+        value: "yamaha",
     }
 ];

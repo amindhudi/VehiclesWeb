@@ -65,9 +65,57 @@ var zod_1 = require("zod");
 var auth_router_1 = require("./auth-router");
 var trpc_1 = require("./trpc");
 var payment_router_1 = require("./payment-router");
+var example_routher_1 = require("./example-routher");
 exports.appRouter = (0, trpc_1.router)({
+    getTodos: trpc_1.publicProcedure.query(function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/, "test"];
+        });
+    }); }),
+    addTodo: trpc_1.publicProcedure.input(zod_1.z.string()).mutation(function (opts) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/, opts + 'is added'];
+        });
+    }); }),
+    setDone: trpc_1.publicProcedure.input(zod_1.z.object({
+        id: zod_1.z.number(),
+        done: zod_1.z.number()
+    })).mutation(function (opts) { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/, true];
+        });
+    }); }),
+    //   createPayloadUser:publicProcedure
+    //   .input(AuthCredentialsValidator)
+    //   .mutation(async ({input})=>{
+    //       debugger
+    //       const {email, password} = input
+    //       const payload = await getPayloadClient()
+    //       //check if user already exists
+    //       const {docs: users} = await payload.find({
+    //           collection:'users',
+    //           where:{
+    //               email:{
+    //                   equals:email,
+    //               }
+    //           }
+    //       })
+    //       if(users.length !==0)
+    //       throw new TRPCError({code:'CONFLICT'})
+    // debugger
+    //       await payload.create({
+    //           collection:'users',
+    //           data:{
+    //               email,
+    //               password,
+    //               role:'user'
+    //           }
+    //       })
+    //       return {success:true, sentToEmail: email}
+    //   }),
     auth: auth_router_1.authRouter,
     payment: payment_router_1.paymentRouter,
+    example: example_routher_1.exampleRouter,
     getInfiniteProducts: trpc_1.publicProcedure.input(zod_1.z.object({
         limit: zod_1.z.number().min(1).max(100),
         cursor: zod_1.z.number().nullish(),
@@ -97,6 +145,62 @@ exports.appRouter = (0, trpc_1.router)({
                                 where: __assign({ approvedForSale: {
                                         equals: 'approved'
                                     } }, parsedQueryOpts),
+                                sort: sort,
+                                depth: 1,
+                                limit: limit,
+                                page: page,
+                            })];
+                    case 2:
+                        _b = _c.sent(), items = _b.docs, hasNextPage = _b.hasNextPage, nextPage = _b.nextPage;
+                        return [2 /*return*/, {
+                                items: items,
+                                nextPage: hasNextPage ? nextPage : null
+                            }];
+                }
+            });
+        });
+    }),
+    getInfiniteVehicles: trpc_1.publicProcedure.input(zod_1.z.object({
+        limit: zod_1.z.number().min(1).max(100),
+        cursor: zod_1.z.number().nullish(),
+        query: query_validator_1.QueryValidator
+    })).query(function (_a) {
+        var input = _a.input;
+        return __awaiter(void 0, void 0, void 0, function () {
+            var query, cursor, sort, limit, search, queryOpts, payload, parsedQueryOpts, page, _b, items, hasNextPage, nextPage;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
+                    case 0:
+                        query = input.query, cursor = input.cursor;
+                        sort = query.sort, limit = query.limit, search = query.search, queryOpts = __rest(query, ["sort", "limit", "search"]);
+                        return [4 /*yield*/, (0, get_payload_1.getPayloadClient)()];
+                    case 1:
+                        payload = _c.sent();
+                        parsedQueryOpts = {};
+                        Object.entries(queryOpts).forEach(function (_a) {
+                            var key = _a[0], value = _a[1];
+                            parsedQueryOpts[key] = {
+                                equals: value,
+                            };
+                        });
+                        page = cursor || 1;
+                        return [4 /*yield*/, payload.find({
+                                collection: 'vehicles',
+                                where: __assign({ approvedForSale: {
+                                        equals: 'approved'
+                                    }, or: [
+                                        // array of OR conditions
+                                        {
+                                            name: {
+                                                contains: search,
+                                            },
+                                        },
+                                        {
+                                            maker: {
+                                                contains: search,
+                                            },
+                                        },
+                                    ] }, parsedQueryOpts),
                                 sort: sort,
                                 depth: 1,
                                 limit: limit,

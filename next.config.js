@@ -3,10 +3,13 @@ const nextConfig = {
 images:{
     remotePatterns:[
         {
-            hostname:'localhost',
+            // hostname:'localhost',
+            // pathname:'**',
+            // port:'3000',
+            // protocol:'http'
+            hostname:'vehicles-web.vercel.app',
             pathname:'**',
-            port:'3000',
-            protocol:'http'
+            protocol:'https'
         }
     ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "showroom",
+  "name": "vehicles",
   "version": "0.1.0",
   "private": true,
   "main": "dist/server.js",
@@ -78,6 +78,6 @@
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.9",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "5.0.0"
   }
 }
