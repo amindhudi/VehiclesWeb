@@ -34,7 +34,7 @@ rateLimit:{
     max:2000
 },
 editor:slateEditor({}),
-db:mongooseAdapter({
+db:mongooseAdapter({ 
     url:process.env.MONGODB_URL!
 }),
 typescript:{
