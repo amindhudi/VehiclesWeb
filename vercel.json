@@ -1,14 +1,5 @@
 {
     "version": 2,
-    "env": {
-    "NODE_ENV": "production",
-    "PAYLOAD_SECRET": "vehiclessecret",
-    "MONGODB_URL": "mongodb+srv://amindhudi:VqXXPF7AIu8bURkG@amincluster.e4wu3.mongodb.net",
-    "NEXT_PUBLIC_SERVER_URL": "https://vehicles-web.vercel.app",
-    "RESEND_API_KEY": "re_KD2LuAso_Adi12NjyrdDNSKzbsBBbmDZS",
-    "STRIPE_SECRET_KEY": "sk_test_51OciC8EWTkHDHHpZY7blI8MsqFDBpfPV3IcVqb77qzxdwO2sfruto1HaUztjeKyKz2wr5CmnU9PYDNXfgabYbRQQ00sGOjA2fv",
-    "STRIPE_WEBHOOK_SECRET": "whsec_8xYxbLjLjd4WWhSdPqBKUjZyfwbtmEfO"
-    },
     "headers": [
       {
         "source": "/api/(.*)",
