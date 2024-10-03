@@ -56,7 +56,7 @@ export function constructMetadata({
       creator: '@joshtriedcoding',
     },
     icons,
-    metadataBase: new URL('https://digitalhippo.up.railway.app'),
+    metadataBase: new URL('https://vehicles-web.vercel.app'),
     ...(noIndex && {
       robots: {
         index: false,
