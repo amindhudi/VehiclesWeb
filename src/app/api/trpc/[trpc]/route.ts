@@ -1,23 +1,18 @@
 import { appRouter } from '@/trpc';
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
-import { NextResponse } from 'next/server';
 
+// Modify the handler to use fetchRequestHandler directly without NextResponse.json
 const handler = async (req: Request) => {
   try {
-    // Ensure that fetchRequestHandler returns a proper response
-    const response = await fetchRequestHandler({
+    return fetchRequestHandler({
       endpoint: '/api/trpc',
       req,
-      router: appRouter,
-      // @ts-expect-error context already passed from express middleware
-      createContext: () => ({}),
+      router: appRouter, 
+      createContext: () => ({})
     });
-    
-    // Return the response correctly wrapped in NextResponse
-    return NextResponse.json(response);
   } catch (error) {
-    console.error('Error in POST handler:', error); // Log the error for debugging
-    return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
+    console.error('Error in POST handler:', error);
+    return new Response(JSON.stringify({ error: 'Something went wrong' }), { status: 500 });
   }
 };
 
