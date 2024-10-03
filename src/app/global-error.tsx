@@ -1,19 +1,27 @@
-'use client' // Error boundaries must be Client Components
- 
-export default function GlobalError({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string }
-  reset: () => void
-}) {
+// app/error.tsx
+'use client';
+
+import { useEffect } from 'react';
+
+interface ErrorProps {
+  error: Error;
+  reset: () => void;
+}
+
+export default function GlobalError({ error, reset }: ErrorProps) {
+  useEffect(() => {
+    // Log the error to an error reporting service like Sentry or LogRocket
+    console.error(error);
+  }, [error]);
+
   return (
-    // global-error must include html and body tags
     <html>
       <body>
-        <h2>Something went wrong! Global error</h2>
-        <button onClick={() => reset()}>Try again</button>
+        <h1>Something went wrong!</h1>
+        <p>{error.message}</p>
+        <pre>{error.stack}</pre>
+        <button onClick={reset}>Try again</button>
       </body>
     </html>
-  )
+  );
 }
