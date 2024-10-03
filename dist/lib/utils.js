@@ -50,7 +50,7 @@ function constructMetadata(_a) {
             description: description,
             images: [image],
             creator: '@joshtriedcoding',
-        }, icons: icons, metadataBase: new URL('https://digitalhippo.up.railway.app') }, (noIndex && {
+        }, icons: icons, metadataBase: new URL('https://vehicles-web.vercel.app') }, (noIndex && {
         robots: {
             index: false,
             follow: false,
