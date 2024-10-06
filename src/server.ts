@@ -61,7 +61,7 @@ const start = async () => {
           )
     
           // @ts-ignore
-          await nextBuild(path.join(__dirname, '../'))
+          await nextBuild(path.join(__dirname, '..'))
 
           
     
