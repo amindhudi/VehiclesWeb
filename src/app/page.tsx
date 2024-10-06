@@ -40,10 +40,6 @@ export default function Home() {
     <MaxWidthWrapper>
       <Search />  
       <ProductReel query={{sort:'desc', limit: 5, search:''}} href="/vehicles" />
-        {/* <div>
-          <h1>Infinite Scrolling List</h1>
-          <InfiniteList />
-        </div> */}
     </MaxWidthWrapper>
    
     </>
