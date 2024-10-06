@@ -38,6 +38,6 @@ db:mongooseAdapter({
     url:process.env.MONGODB_URL!
 }),
 typescript:{
-    outputFile:path.resolve(__dirname, 'scr/payload-types.ts')
+    outputFile:path.resolve(__dirname, 'payload-types.ts')
 }
 })
