@@ -2,7 +2,7 @@
     "version": 2,
     "env": {
       "NODE_ENV": "production"   
-      }
- 
+      },
+      "includeFiles": ["src/payload.config.ts"]
   }
   

@@ -49,7 +49,7 @@ cached.promise = payload.init({
     },
     secret: process.env.PAYLOAD_SECRET,
     local: initOptions?.express ? false: true,
-    ...(initOptions || {}),
+    ...(initOptions || {})
 })
 }
 try{
