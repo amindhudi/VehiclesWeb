@@ -12,7 +12,7 @@ import { Orders } from './src/collections/Orders'
 import { Vehicles } from './src/collections/Vehicles/Vehicles'
 
 dotenv.config({
-    path: path.resolve(__dirname, './env')
+    path: path.resolve(__dirname, './.env')
 })
 
 export default buildConfig({
