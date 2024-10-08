@@ -3,16 +3,16 @@ import {webpackBundler} from '@payloadcms/bundler-webpack'
 import {mongooseAdapter} from '@payloadcms/db-mongodb'
 import {slateEditor} from '@payloadcms/richtext-slate'
 import path from 'path'
-import { Users } from './collections/Users'
+import { Users } from './src/collections/Users'
 import dotenv from 'dotenv'
-import { Products } from './collections/Products/Products'
-import { Media } from './collections/Media'
-import { ProductFiles } from './collections/ProductFile'
-import { Orders } from './collections/Orders'
-import { Vehicles } from './collections/Vehicles/Vehicles'
+import { Products } from './src/collections/Products/Products'
+import { Media } from './src/collections/Media'
+import { ProductFiles } from './src/collections/ProductFile'
+import { Orders } from './src/collections/Orders'
+import { Vehicles } from './src/collections/Vehicles/Vehicles'
 
 dotenv.config({
-    path: path.resolve(__dirname, '../.env')
+    path: path.resolve(__dirname, './env')
 })
 
 export default buildConfig({
@@ -38,6 +38,6 @@ db:mongooseAdapter({
     url:process.env.MONGODB_URL!
 }),
 typescript:{
-    outputFile:path.resolve(__dirname, 'scr/payload-types.ts')
+    outputFile:path.resolve(__dirname, 'payload-types.ts')
 }
 })
