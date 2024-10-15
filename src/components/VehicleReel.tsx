@@ -1,6 +1,6 @@
 'use client'
 import { TQueryValidator } from "@/lib/validators/query-validator"
-import { Product, Vehicle } from "@/payload-types"
+import { Product, Vehicle } from "../payload-types"
 import { trpc } from "@/trpc/client"
 import Link from "next/link"
 import PaginationPage from "./Pagination"

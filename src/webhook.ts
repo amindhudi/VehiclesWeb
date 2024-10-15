@@ -4,7 +4,7 @@ import { WebhookRequest } from './server'
 import type Stripe from 'stripe'
 import { getPayloadClient } from './get-payload'
 import { RESPONSE_LIMIT_DEFAULT } from 'next/dist/server/api-utils'
-import { Product } from '../payload-types'
+import { Product } from './payload-types'
 import {Resend} from 'resend'
 import { ReceiptEmailHtml } from './components/emails/ReceiptEmail'
 

@@ -8,15 +8,15 @@ var bundler_webpack_1 = require("@payloadcms/bundler-webpack");
 var db_mongodb_1 = require("@payloadcms/db-mongodb");
 var richtext_slate_1 = require("@payloadcms/richtext-slate");
 var path_1 = __importDefault(require("path"));
-var Users_1 = require("./src/collections/Users");
+var Users_1 = require("./collections/Users");
 var dotenv_1 = __importDefault(require("dotenv"));
-var Products_1 = require("./src/collections/Products/Products");
-var Media_1 = require("./src/collections/Media");
-var ProductFile_1 = require("./src/collections/ProductFile");
-var Orders_1 = require("./src/collections/Orders");
-var Vehicles_1 = require("./src/collections/Vehicles/Vehicles");
+var Products_1 = require("./collections/Products/Products");
+var Media_1 = require("./collections/Media");
+var ProductFile_1 = require("./collections/ProductFile");
+var Orders_1 = require("./collections/Orders");
+var Vehicles_1 = require("./collections/Vehicles/Vehicles");
 dotenv_1.default.config({
-    path: path_1.default.resolve(__dirname, './env')
+    path: path_1.default.resolve(__dirname, '../.env')
 });
 exports.default = (0, config_1.buildConfig)({
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',

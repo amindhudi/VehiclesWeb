@@ -1,6 +1,6 @@
 'use client'
 import { useCart } from "@/hooks/use-cart"
-import { Product } from "@/payload-types"
+import { Product } from "../payload-types"
 import {useEffect, useState } from "react"
 import { Button } from "./ui/button"
 

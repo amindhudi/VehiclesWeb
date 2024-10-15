@@ -8,7 +8,7 @@ import { getServerSideUser } from '@/lib/payload-utils'
 import { cookies } from 'next/headers'
 import UserAccountNav from './UserAccountNav'
 import MobileNav from './MobileNav'
-import { User } from '@/payload-types'
+import { User } from '../payload-types'
 // import MobileNav from './MobileNav'
 
 const Navbar = async () => {

@@ -1,6 +1,6 @@
 'use client'
 import { cn, formatPrice } from "@/lib/utils"
-import { Product, Vehicle } from "@/payload-types"
+import { Product, Vehicle } from "../payload-types"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { PRODUCT_CATEGORIES, VEHICLE_CATEGORIES } from "./config"

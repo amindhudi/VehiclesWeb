@@ -2,7 +2,7 @@
 import { PRODUCT_CATEGORIES } from "../../components/config";
 import { Access, CollectionConfig } from "payload/types";
 import { BeforeChangeHook, AfterChangeHook } from "payload/dist/collections/config/types";
-import { Product, User } from "../../../payload-types";
+import { Product, User } from "../../payload-types";
 import { stripe } from "../../lib/stripe";
 
 const addUser : BeforeChangeHook<Product>= async ({req, data})=>{

@@ -56,7 +56,7 @@ export function constructMetadata({
       creator: '@joshtriedcoding',
     },
     icons,
-    metadataBase: new URL('https://vehicles-web.vercel.app'),
+    metadataBase: new URL('http://localhost:3000'),
     ...(noIndex && {
       robots: {
         index: false,
