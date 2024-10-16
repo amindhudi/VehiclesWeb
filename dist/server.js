@@ -113,10 +113,10 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                             switch (_a.label) {
                                 case 0:
                                     payload.logger.info('Next.js is building for production');
-                                    // @ts-ignore
+                                    // @ts-expect-error
                                     return [4 /*yield*/, (0, build_1.default)(path_1.default.join(__dirname, '../'))];
                                 case 1:
-                                    // @ts-ignore
+                                    // @ts-expect-error
                                     _a.sent();
                                     process.exit();
                                     return [2 /*return*/];
