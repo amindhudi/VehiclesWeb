@@ -13,6 +13,7 @@ import {parse} from 'url'
 import { PayloadRequest } from 'payload/types'
 const app = express()
 const PORT = Number(process.env.PORT) || 3000
+const HOST = '0.0.0.0';
 const createContext =({
     req,
     res
@@ -55,7 +56,7 @@ const start = async () => {
     app.use("/cart", cartRouter)
 
     if (process.env.NEXT_BUILD) {
-        app.listen(PORT, async () => {
+        app.listen(PORT,HOST, async () => {
           payload.logger.info(
             'Next.js is building for production'
           )
