@@ -17,7 +17,7 @@ const handler = async (req: Request) => {
         endpoint: '/api/trpc',
         req,
         router: appRouter, 
-        // @ts-expect-error
+       // @ts-ignore
         createContext: () => ({})
       });
     } catch (error) {
