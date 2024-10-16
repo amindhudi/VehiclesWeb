@@ -1,0 +1,12 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(auth)/sign-in/page": "app/(auth)/sign-in/page.js",
+  "/(auth)/sign-up/page": "app/(auth)/sign-up/page.js",
+  "/(auth)/verify-email/page": "app/(auth)/verify-email/page.js",
+  "/api/trpc/[trpc]/route": "app/api/trpc/[trpc]/route.js",
+  "/cart/page": "app/cart/page.js",
+  "/thank-you/page": "app/thank-you/page.js",
+  "/vehicles/page": "app/vehicles/page.js",
+  "/page": "app/page.js",
+  "/vehicle/[vehicleId]/page": "app/vehicle/[vehicleId]/page.js"
+}
