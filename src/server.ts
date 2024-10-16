@@ -26,13 +26,13 @@ export type ExpressContext = inferAsyncReturnType<typeof createContext>
 export type WebhookRequest = IncomingMessage & {rawBody: Buffer}
 const start = async () => {
 
-    const webhookMiddleware = bodyParser.json({
-        verify:(req:WebhookRequest, _, buffer) => {
-            req.rawBody = buffer
-        }
-    })
+    // const webhookMiddleware = bodyParser.json({
+    //     verify:(req:WebhookRequest, _, buffer) => {
+    //         req.rawBody = buffer
+    //     }
+    // })
 
-    app.post("/api/webhook/stripe", webhookMiddleware, stripeWebhookHandler)
+    // app.post("/api/webhook/stripe", webhookMiddleware, stripeWebhookHandler)
 
     const payload = await getPayloadClient({
         initOptions:{
@@ -55,7 +55,7 @@ const start = async () => {
     app.use("/cart", cartRouter)
 
     if (process.env.NEXT_BUILD) {
-        app.listen(PORT, "0.0.0.0", async () => {
+        app.listen(PORT, async () => {
           payload.logger.info(
             'Next.js is building for production'
           )
