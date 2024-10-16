@@ -27,13 +27,13 @@ export type ExpressContext = inferAsyncReturnType<typeof createContext>
 export type WebhookRequest = IncomingMessage & {rawBody: Buffer}
 const start = async () => {
 
-    const webhookMiddleware = bodyParser.json({
-        verify:(req:WebhookRequest, _, buffer) => {
-            req.rawBody = buffer
-        }
-    })
+    // const webhookMiddleware = bodyParser.json({
+    //     verify:(req:WebhookRequest, _, buffer) => {
+    //         req.rawBody = buffer
+    //     }
+    // })
 
-    app.post("/api/webhook/stripe", webhookMiddleware, stripeWebhookHandler)
+    // app.post("/api/webhook/stripe", webhookMiddleware, stripeWebhookHandler)
 
     const payload = await getPayloadClient({
         initOptions:{
