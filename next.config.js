@@ -7,13 +7,14 @@ const nextConfig = {
 images:{
     remotePatterns:[
         {
-            hostname:'localhost',
+            // hostname:'localhost',
+            // pathname:'**',
+            // port:'3000',
+            // protocol:'http'
+            hostname:'vehiclesweb-production.up.railway.app',
             pathname:'**',
             port:'3000',
-            protocol:'http'
-            // hostname:'vehicles-web.vercel.app',
-            // pathname:'**',
-            // protocol:'https'
+            protocol:'https'
         }
     ]
 },
