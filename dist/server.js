@@ -72,7 +72,6 @@ var path_1 = __importDefault(require("path"));
 var url_1 = require("url");
 var app = (0, express_1.default)();
 var PORT = Number(process.env.PORT) || 3000;
-var HOST = '0.0.0.0';
 var createContext = function (_a) {
     var req = _a.req, res = _a.res;
     return ({
@@ -108,15 +107,15 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                 });
                 app.use("/cart", cartRouter);
                 if (process.env.NEXT_BUILD) {
-                    app.listen(PORT, HOST, function () { return __awaiter(void 0, void 0, void 0, function () {
+                    app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
                                     payload.logger.info('Next.js is building for production');
-                                    // @ts-expect-error
+                                    // @ts-ignore
                                     return [4 /*yield*/, (0, build_1.default)(path_1.default.join(__dirname, '../'))];
                                 case 1:
-                                    // @ts-expect-error
+                                    // @ts-ignore
                                     _a.sent();
                                     process.exit();
                                     return [2 /*return*/];
@@ -132,7 +131,7 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                 app.use(function (req, res) { return (0, next_utils_1.nextHandler)(req, res); });
                 next_utils_1.nextApp.prepare().then(function () {
                     payload.logger.info('Next.js started');
-                    app.listen(PORT, HOST, function () { return __awaiter(void 0, void 0, void 0, function () {
+                    app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
                         return __generator(this, function (_a) {
                             payload.logger.info("Next.js App URL:".concat(process.env.NEXT_PUBLIC_SERVER_URL));
                             return [2 /*return*/];
