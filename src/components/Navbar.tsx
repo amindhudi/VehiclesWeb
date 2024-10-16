@@ -12,15 +12,15 @@ import { User } from '../payload-types'
 // import MobileNav from './MobileNav'
 
 const Navbar = async () => {
-  // const nextCookies = cookies()
-  // const { user } = await getServerSideUser(nextCookies)
-  const user : User={
-    id:'1',
-    updatedAt: Date(),
-    createdAt:Date(),
-    email:'',
-    password:''
-  };
+  const nextCookies = cookies()
+  const { user } = await getServerSideUser(nextCookies)
+  // const user : User={
+  //   id:'1',
+  //   updatedAt: Date(),
+  //   createdAt:Date(),
+  //   email:'',
+  //   password:''
+  // };
   return (
  
     <div className='bg-white sticky z-50 top-0 inset-x-0 h-16'>

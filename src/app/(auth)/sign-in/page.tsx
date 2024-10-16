@@ -137,7 +137,7 @@ return <>
   <Button
    onClick={continueAsBuyer}
    variant='secondary' 
-   disabled={isLoading}>Continue as Buyer</Button>
+   disabled={isLoading}>Continue as customer</Button>
   ):(
     <Button 
     onClick={continueAsSeller}
